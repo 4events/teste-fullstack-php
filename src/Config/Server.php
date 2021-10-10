@@ -2,7 +2,7 @@
 
 namespace App\Config;
 
-use Swoole\Http\Server as SwooleServer;
+use Swoole\WebSocket\Server as SwooleServer;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
 
