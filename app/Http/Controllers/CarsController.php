@@ -63,6 +63,9 @@ class CarsController
             if(!$data['vehicle'])
                 throw new UnprocessableEntityException('The field `vehicle` is required');
 
+            if(!$data['manufacturer'])
+                throw new UnprocessableEntityException('The field `manufacturer` is required');
+
             if(!$data['year'])
                 throw new UnprocessableEntityException('The field `year` is required');
 
@@ -79,6 +82,7 @@ class CarsController
 
             return response([]);
         } catch (\Exception $error) {
+            echo $error->getMessage();
             return (new DefaultException($error))->getError();
         }
     }

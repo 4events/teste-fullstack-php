@@ -11,7 +11,7 @@ class Server
 
     protected SwooleServer $server;
 
-    const HOST = "0.0.0.0";
+    const HOST = "127.0.0.1";
 
     const PORT = 9501;
 
@@ -43,6 +43,7 @@ class Server
 
             $response->header("Content-Type", "application/json");
             $response->header("charset", "utf-8");
+            $response->header("Access-Control-Allow-Origin", "*");
             $response->status($res['status']);
             $response->end(
                 json_encode(

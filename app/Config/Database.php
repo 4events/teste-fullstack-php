@@ -8,14 +8,14 @@ class Database
 {
 
     const DB_HOST = "127.0.0.1";
-    const DB_NAME = "teste_fullstack_php";
-    const DB_USER = "teste_fullstack_php";
-    const DB_PASS = ".srXmB.9FyJTBH)E";
+    const DB_NAME = "testephp";
+    const DB_USER = "testephp";
+    const DB_PASS = "Px2FCx_JRmvs6tMg";
 
     /**
      * @var PDO
      */
-    private $stmt;
+    private PDO $stmt;
 
     /**
      * @return Database
@@ -41,7 +41,7 @@ class Database
     /**
      * @return PDO
      */
-    public function getPDO()
+    public function getPDO(): PDO
     {
         return $this->stmt;
     }
