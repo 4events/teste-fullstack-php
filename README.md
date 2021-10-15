@@ -68,3 +68,17 @@ Tudo que for feito em adicional, se for somar ao projeto, contará pontos positi
 ## Dúvida
 
 Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+
+<hr>
+
+## Vamos fazer a aplicação funcionar!!
+
+#### Fique atento(a) as versões necessárias
+
+* PHP ^7.4
+* Swoole ^4.7
+* Composer ^2.1
+* Yarn ^1.22 ou NPM ^8.0
+* MySQL Database ^8.X
+
+Efetue o clone dessa aplicação e execute o arquivo <code></code>
