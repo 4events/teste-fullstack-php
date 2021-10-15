@@ -47,7 +47,7 @@ export default class Http {
                         return serviceData.method.toUpperCase() === 'GET'
                     }
 
-                    const url = isGet() ? this.makeGetURl(serviceData.url, data) : serviceData.uri
+                    const url = isGet() ? this.makeGetURl(serviceData.url, data) : serviceData.url
 
                     return this.axios({
                         url,

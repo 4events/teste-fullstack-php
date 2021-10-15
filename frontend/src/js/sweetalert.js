@@ -5,7 +5,7 @@ const toast = Swal.mixin({
     timer: 5000,
     timerProgressBar: true,
     showConfirmButton: false,
-    position: "bottom",
+    position: "top",
 })
 
 const loading = Swal.mixin({
@@ -20,3 +20,4 @@ const loading = Swal.mixin({
 
 window.loading = loading
 window.toast = toast
+window.swal = Swal

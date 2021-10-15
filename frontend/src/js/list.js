@@ -27,7 +27,7 @@ export default class List {
                     <span class="year">${data['year']}</span>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-bookmark"></i>
+                    ${data['deleted_at']? '<span>Deletado</span>' : '<i class="fas fa-bookmark"></i>'}
                 </div>
             </li>
         `
@@ -35,7 +35,7 @@ export default class List {
 
     noDataComponent(message) {
         return `
-            <li class="no-data">
+            <li class="no-data" onclick="Vehicles.load()">
                 ${message}
             </li>
         `;
@@ -63,10 +63,13 @@ export default class List {
 
     async load() {
         const {data} = await this.requestAll()
+        this.loadContent(data)
+    }
 
+    loadContent(data = []) {
         this.el.innerHTML = ''
 
-        if(!data) {
+        if(!data || !data.length) {
             this.el.innerHTML = this.noDataComponent(this.errorMessage)
             return null
         }
@@ -76,7 +79,13 @@ export default class List {
         data.map(item => {
             this.el.innerHTML += this.makeComponent(item)
         })
+    }
 
+    loadPreviewInputs(data = {}) {
+        Object.keys(data).forEach(key => {
+            const el = document.querySelector(`[data-detail="${key}"]`)
+            if(el) el.innerHTML = data[key]
+        })
     }
 
     async openDetails (id) {
@@ -94,14 +103,14 @@ export default class List {
             return null;
         }
 
-        const keys = Object.keys(response.data)
-
-        keys.forEach(key => {
-            const el = document.querySelector(`[data-detail="${key}"]`)
-            if(el) el.innerHTML = response.data[key]
-        })
+        this.loadPreviewInputs(response.data)
 
         this.detailsEl.classList.add('vehicle-details-show')
+
+        document.querySelector('.btn-edit').dataset.id = id
+        document.querySelector('.btn-drop').dataset.id = id
+
+        document.querySelector('.page').scroll({ top: 100000, behavior: "smooth"})
 
         toast.fire({
             title: 'Veículo carregado!',

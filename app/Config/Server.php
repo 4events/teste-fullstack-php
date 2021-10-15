@@ -44,6 +44,9 @@ class Server
             $response->header("Content-Type", "application/json");
             $response->header("charset", "utf-8");
             $response->header("Access-Control-Allow-Origin", "*");
+            $response->header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
+            $response->header("Access-Control-Allow-Headers", '*');
+            $response->header("Access-Control-Max-Age", 86400);
             $response->status($res['status']);
             $response->end(
                 json_encode(
@@ -85,7 +88,7 @@ class Server
         }
 
         if(count($route) === 0)
-            return \response(['error' => 'url not found'], 404);
+            return \response(['error' => 'Nada foi Encontrado'], 404);
 
         return (new $route['controller']())->{$route['function']}($request);
 

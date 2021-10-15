@@ -24,6 +24,11 @@ class Model extends Database
      */
     protected string $primaryKey;
 
+    /**
+     * @var array|string[]
+     */
+    protected array $fillable;
+
     public function __construct()
     {
         parent::__construct();
@@ -36,7 +41,7 @@ class Model extends Database
      */
     public function all()
     {
-        $query = "SELECT * FROM ".$this->table;
+        $query = "SELECT * FROM ".$this->table." WHERE deleted_at is null";
 
         $stmt = $this->pdo->query($query);
 
@@ -49,13 +54,38 @@ class Model extends Database
      */
     public function find(int $id): ?array
     {
-        $query = "SELECT * FROM ".$this->table." WHERE ".$this->primaryKey." = $id";
+        $query = "SELECT * FROM ".$this->table." WHERE ".$this->primaryKey." = $id AND deleted_at is null";
 
         $stmt = $this->pdo->query($query);
 
         $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return count($response) ? $response[0] : null;
+    }
+
+
+    /**
+     * @param $data
+     * @return array|false
+     */
+    public function search($data)
+    {
+        $query = "SELECT * FROM "
+            .$this->table
+            ." WHERE ";
+
+        $count = 0;
+        foreach ($this->fillable as $key)
+        {
+            $query .= $key . " LIKE '%$data%'";
+            $count ++;
+            if($count < count($this->fillable)) $query .= " OR ";
+        }
+
+
+        $stmt = $this->pdo->query($query);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
@@ -74,6 +104,8 @@ class Model extends Database
             $count ++;
             if($count < count($where) - 1) $query .= " AND ";
         }
+
+        $query .= " AND deleted_at is null";
 
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -103,8 +135,6 @@ class Model extends Database
 
         $query .= $values . ")";
 
-        echo $query;
-
         $stmt = $this->pdo->prepare($query);
 
         foreach ($data as $key => $value)
@@ -123,6 +153,7 @@ class Model extends Database
     /**
      * @param array $data
      * @param int $id
+     * @throws QueryException
      */
     public function update(array $data, int $id)
     {
@@ -132,22 +163,50 @@ class Model extends Database
 
         foreach ($data as $key => $value)
         {
-            $query .= $key . " = " . $value;
+            $query .= "$key = :$key";
             $count ++;
-            if($count < count($data) - 1) $query .= ", ";
+            if($count < count($data)) {
+                $query .= ", ";
+            }
         }
 
-        $this->pdo->query($query)->execute();
+        $query .= " WHERE ".$this->primaryKey. " = :id";
+
+        $stmt = $this->pdo->prepare($query);
+
+        foreach ($data as $key => $value)
+        {
+            unset($data[$key]);
+            $data[":$key"] = $value;
+        }
+
+        $data[':id'] = $id;
+
+        if(!$stmt->execute($data)) {
+            print_r($stmt->errorInfo());
+            throw new QueryException();
+        }
     }
 
     /**
      * @param int $id
+     * @throws QueryException
      */
     public function delete(int $id)
     {
-        $query = "UPDATE ".$this->table." SET deleted_at = ".date('Y-m-d H:i:s')." WHERE ".$this->primaryKey." = $id";
+        $query = "UPDATE ".$this->table." SET deleted_at = :deleted_at WHERE ".$this->primaryKey." = :id";
 
-        $this->pdo->query($query)->execute();
+        $stmt = $this->pdo->prepare($query);
+
+        $data = [
+            ':deleted_at' => date('Y-m-d H:i:s'),
+            ':id' => $id
+        ];
+
+        if(!$stmt->execute($data)) {
+            print_r($stmt->errorInfo());
+            throw new QueryException();
+        }
     }
 
 }

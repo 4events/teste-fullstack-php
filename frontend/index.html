@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>FULLSTACK</title>
     <link rel="stylesheet" href="dist/main.css">
     <link
@@ -33,6 +35,7 @@
         <input
             type="text"
             placeholder="BUSCAR por um veículo"
+            onchange="Search.execute()"
         >
     </section>
 </div>
@@ -79,14 +82,21 @@
                             class="btn-edit"
                             data-bs-target="#editVehicleModal"
                             data-bs-toggle="modal"
+                            data-id=""
                         >
                             <i class="fas fa-pen"></i>
                             EDITAR
                         </button>
 
-                        <span>
-                            <i class="fas fa-bookmark"></i>
-                        </span>
+                        <button
+                                type="button"
+                                class="btn-drop"
+                                data-id=""
+                                onclick="drop()"
+                        >
+                            <i class="fas fa-trash"></i>
+                            Inativar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -102,25 +112,25 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
 >
-    <form id="formNewVehicle" class="modal-dialog-centered needs-validation">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content rounded-0">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title" id="exampleModalLabel">
-                        Novo Veículo
-                    </h3>
-                </div>
-                <div class="modal-body">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="exampleModalLabel">
+                    Novo Veículo
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form id="formNewVehicle" class="needs-validation">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-floating mb-3 border-bottom">
                                 <input
-                                    type="text"
-                                    class="form-control border-0 rounded-0"
-                                    id="vehicle"
-                                    name="vehicle"
-                                    placeholder="HB20 1.0 Flex"
-                                    required
+                                        type="text"
+                                        class="form-control border-0 rounded-0"
+                                        id="vehicle"
+                                        name="vehicle"
+                                        placeholder="HB20 1.0 Flex"
+                                        required
                                 >
                                 <label for="vehicle" class="text-muted">Veículo</label>
                             </div>
@@ -128,12 +138,12 @@
                         <div class="col-md-6 col-12">
                             <div class="form-floating mb-3 border-bottom">
                                 <input
-                                    type="text"
-                                    class="form-control border-0 rounded-0"
-                                    id="manufacturer"
-                                    name="manufacturer"
-                                    placeholder="Hyundai"
-                                    required
+                                        type="text"
+                                        class="form-control border-0 rounded-0"
+                                        id="manufacturer"
+                                        name="manufacturer"
+                                        placeholder="Hyundai"
+                                        required
                                 >
                                 <label for="manufacturer" class="text-muted">Marca</label>
                             </div>
@@ -141,13 +151,13 @@
                         <div class="col-md-6 col-12">
                             <div class="form-floating mb-3 border-bottom">
                                 <input
-                                    type="number"
-                                    class="form-control border-0 rounded-0"
-                                    id="year"
-                                    name="year"
-                                    min="1900"
-                                    placeholder="2017"
-                                    required
+                                        type="number"
+                                        class="form-control border-0 rounded-0"
+                                        id="year"
+                                        name="year"
+                                        min="1900"
+                                        placeholder="2017"
+                                        required
                                 >
                                 <label for="year" class="text-muted">Ano</label>
                             </div>
@@ -155,12 +165,13 @@
                         <div class="col-md-6 col-12 pt-4">
                             <div class="form-check form-switch">
                                 <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    name="is_sold"
-                                    role="switch"
-                                    id="isSold"
-                                    required
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        name="is_sold"
+                                        role="switch"
+                                        id="isSold"
+                                        value="1"
+                                        required
                                 >
                                 <label
                                         class="form-check-label"
@@ -173,35 +184,37 @@
                         <div class="col-12">
                             <div class="form-floating">
                                 <textarea
-                                    class="form-control rounded-0 border-0 border-bottom"
-                                    name="description"
-                                    id="description"
-                                    style="height: 200px;"
-                                    required
+                                        class="form-control rounded-0 border-0 border-bottom"
+                                        name="description"
+                                        id="description"
+                                        style="height: 200px;"
+                                        required
                                 ></textarea>
                                 <label for="description">Descrição</label>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer border-0">
-                    <button
-                            type="submit"
-                            class="btn btn-primary rounded-0"
-                    >
-                        ADICIONAR
-                    </button>
-                    <button
-                            type="button"
-                            class="btn btn-secondary rounded-0"
-                            data-bs-dismiss="modal"
-                    >
-                        FECHAR
-                    </button>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button
+                        type="button"
+                        class="btn btn-primary rounded-0"
+                        onclick="store()"
+                >
+                    ADICIONAR
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-secondary rounded-0"
+                        data-bs-dismiss="modal"
+                >
+                    FECHAR
+                </button>
             </div>
         </div>
-    </form>
+    </div>
+
 </div>
 
 <div
@@ -211,15 +224,16 @@
         aria-labelledby="editVehicleModalLabel"
         aria-hidden="true"
 >
-    <form id="editNewVehicle" class="modal-dialog-centered needs-validation" novalidate>
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content rounded-0">
-                <div class="modal-header border-0">
-                    <h3 class="modal-title" id="editVehicleModalLabel">
-                        Editar Veículo
-                    </h3>
-                </div>
-                <div class="modal-body">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+        <div class="modal-content rounded-0">
+            <div class="modal-header border-0">
+                <h3 class="modal-title" id="editVehicleModalLabel">
+                    Editar Veículo
+                </h3>
+            </div>
+            <div class="modal-body">
+                <form id="formEditVehicle" class="needs-validation" novalidate>
+                    <input type="hidden" name="id">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-floating mb-3 border-bottom">
@@ -269,6 +283,7 @@
                                         name="is_sold"
                                         role="switch"
                                         id="isSoldEdit"
+                                        value="1"
                                         required
                                 >
                                 <label
@@ -292,36 +307,139 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer border-0">
-                    <button
-                            type="submit"
-                            class="btn btn-primary rounded-0"
-                    >
-                        SALVAR
-                    </button>
-                    <button
-                            type="button"
-                            class="btn btn-secondary rounded-0"
-                            data-bs-dismiss="modal"
-                    >
-                        FECHAR
-                    </button>
-                </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button
+                        type="button"
+                        class="btn btn-primary rounded-0"
+                        onclick="update()"
+                >
+                    SALVAR
+                </button>
+                <button
+                        type="button"
+                        class="btn btn-secondary rounded-0"
+                        data-bs-dismiss="modal"
+                >
+                    FECHAR
+                </button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <script type="text/javascript" src="dist/main.js"></script>
 <script>
 
+
+    async function store() {
+        try {
+            loading.fire()
+            const response = await new Form('#formNewVehicle').submit('store')
+            bootstrap.Modal.getOrCreateInstance(document.querySelector('#newVehicleModal')).hide()
+            await Vehicles.load()
+            toast.fire({
+                icon: "success",
+                title: "Veículo cadastrado"
+            })
+        } catch (error) {
+            loading.close()
+            console.error(error)
+            toast.fire({
+                icon: "error",
+                title: JSON.parse(error.request.response).error
+            })
+        }
+    }
+
+    async function update() {
+        try {
+            loading.fire()
+            await new Form('#formEditVehicle').submit('update')
+            bootstrap.Modal.getOrCreateInstance(document.querySelector('#editVehicleModal')).hide()
+            await Vehicles.load()
+            Vehicles.closeDetails()
+            toast.fire({
+                icon: "success",
+                title: "Veículo atualizado"
+            })
+        } catch (error) {
+            loading.close()
+            console.error(error)
+            toast.fire({
+                icon: "error",
+                title: JSON.parse(error.request.response).error
+            })
+        }
+    }
+
+    async function drop() {
+        try {
+            const result = await swal.fire({
+                title: 'Você realmente deseja inativar este veículo?',
+                text: "Esta ação é irreversível!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, inative-o!'
+            })
+
+            if (result.isConfirmed) {
+
+                const id = document.querySelector('.btn-drop').dataset.id
+
+                const data = new FormData()
+                data.append('id', id)
+
+                await Vehicles.requests.drop(data)
+
+                Vehicles.closeDetails()
+                await Vehicles.load()
+
+                toast.fire({
+                    text: 'O veículo foi inativado.',
+                    icon: 'success'
+                })
+            }
+        } catch (error) {
+            loading.close()
+            console.error(error)
+            toast.fire({
+                icon: "error",
+                title: JSON.parse(error.request.response).error
+            })
+        }
+    }
+
+    function getFormEditField (name = '') {
+        return document.querySelector('#formEditVehicle').querySelector(`[name="${name}"]`)
+    }
+
     document.querySelector('#formNewVehicle').addEventListener('submit', function (event) {
-
         event.preventDefault()
+    })
 
-
-
+    document.querySelector('#editVehicleModal').addEventListener('show.bs.modal', async function (event) {
+        try {
+            loading.fire()
+            const button = event.relatedTarget
+            const {data} = await Vehicles.requestOne(button.dataset.id)
+            getFormEditField('id').value = data.id
+            getFormEditField('vehicle').value = data.vehicle
+            getFormEditField('manufacturer').value = data.manufacturer
+            getFormEditField('is_sold').checked = !!data.is_sold
+            getFormEditField('description').value = data.description
+            getFormEditField('year').value = data.year
+            loading.close()
+        } catch (error) {
+            console.log(error)
+            toast.fire({
+                icon: "error",
+                title: JSON.parse(error.request.response).error
+            })
+        }
     })
 
 </script>

@@ -10,15 +10,33 @@ const ROUTES = [
         "function" => "index"
     ],
     [
-        "uri" => "/vehicles/find",
+        "uri" => "/vehicles/show",
         "method" => "GET",
         "controller" => CarsController::class,
         "function" => "show"
+    ],
+    [
+        "uri" => "/vehicles/find",
+        "method" => "GET",
+        "controller" => CarsController::class,
+        "function" => "search"
     ],
     [
         "uri" => "/vehicles",
         "method" => "POST",
         "controller" => CarsController::class,
         "function" => "store"
-    ]
+    ],
+    [
+        "uri" => "/vehicles/update",
+        "method" => "POST",
+        "controller" => CarsController::class,
+        "function" => "update"
+    ],
+    [
+        "uri" => "/vehicles/delete",
+        "method" => "POST",
+        "controller" => CarsController::class,
+        "function" => "delete"
+    ],
 ];

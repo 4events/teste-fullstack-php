@@ -28,8 +28,6 @@
 
 .bar-top .title .site-name
 {
-  right: 0;
-  width: calc(100% - 70px);
   justify-content: start;
 }
 
@@ -91,6 +89,13 @@
 
 }
 
+@media screen and (min-width: 1000px){
+  .bar-top .title .site-name {
+    right: 0;
+    width: calc(100% - 70px);
+  }
+}
+
 @media screen and (max-width: 1000px) {
 
   .bar-top {
@@ -99,7 +104,7 @@
 
   .bar-top .title
   {
-    width: 100vw;
+    width: calc(100% - 140px);
     height: 100px;
     position: relative;
   }
@@ -107,8 +112,14 @@
   .bar-top .title .icon,
   .bar-top .title .site-name
   {
-    font-size: 26pt;
+    font-size: 20pt;
     height: 100px;
+  }
+
+  .bar-top .title .site-name
+  {
+    left: 70px;
+    width: calc(100% - 210px);
   }
 
   .bar-top .btn-search
@@ -120,6 +131,7 @@
     height: 60px;
     font-size: 20pt;
     color: #ffffff;
+    z-index: 5;
     background: none;
     border: none;
   }
