@@ -68,3 +68,57 @@ Tudo que for feito em adicional, se for somar ao projeto, contará pontos positi
 ## Dúvida
 
 Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+
+<hr>
+
+## Vamos fazer a aplicação funcionar!!
+
+#### Fique atento(a) as versões necessárias
+
+* PHP ^7.4
+* Swoole ^4.7
+* Composer ^2.1
+* Yarn ^1.22 ou NPM ^8.0
+* MySQL Database ^8.X
+
+Efetue o clone dessa aplicação e execute o arquivo em 
+<code>~/scripts/database.sql</code> no seu banco de dados MySQL para criar a tabela.
+
+Configure seu banco em <code>~/app/Config/Database.php</code> alterando os valores abaixo para os correspondentes:
+
+```
+10|    const DB_HOST = "127.0.0.1"; //Database Address
+11|    const DB_NAME = "testephp"; //Database Name
+12|    const DB_USER = "testephp"; //Database User
+13|    const DB_PASS = "Px2FCx_JRmvs6tMg"; //Database password
+```
+
+### Na pasta raiz do projeto rode os seguintes comandos para colocar no ar a API:
+
+Para instalar as dependências PHP do projeto, rode...
+```
+  composer install
+```
+
+Para inicializar a API, rode...
+```
+  php public/index.php
+```
+
+### Vamos preparar e inicializar o Front-End
+
+Vá para a pasta <code>cd frontend</code> e execute os seguintes comandos:
+
+Para instalar as dependências front-end, rode...
+```
+  yarn i
+```
+
+Para compilar os arquivos de estilo de javascript, rode...
+```
+  yarn build
+```
+
+Para acessar o front, basta abrir o arquivo <code>index.html</code> na pasta <code>frontend</code>!
+
+### Até mais, dev!
