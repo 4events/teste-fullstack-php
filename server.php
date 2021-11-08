@@ -9,20 +9,18 @@
     });
     
     $server->on("Request", function(Swoole\HTTP\Request $request, Swoole\HTTP\Response $response){
-    
-        if(strlen($request->server['request_uri']) > 1){
-            $final_header = 'application/json';
-        }else{
-            $final_header = 'text/html';
-        }
-        $response->header('Content-Type', $final_header);
-        $response->end(sol_method(
-            $request->server['request_uri'],
+
+        $response_sv = sol_method
+        (
             $request->server['request_method'],
-            $request->get,
-            $request->getContent()
-        ));
+            $request->server['request_uri'],
+            $request->getContent(),
+            $request->get
+        );
+        $response->header('Content-Type', $response_sv['header']);
+        $response->end($response_sv['end']);
 
     });
 
     $server->start();
+    
