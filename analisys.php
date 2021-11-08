@@ -2,69 +2,90 @@
 
     require_once('conn.php'); 
 
-    function sol_method($vu,$vm,$vg,$vp){
-
-        $vu = explode("/", $vu);
+    function sol_method($vm,$vu,$vp,$vg){
 
         $vp = isset($vp) ? json_decode($vp, true) : null;
 
-        $vg["q"] = isset($vg["q"]) ? $vg["q"] : null;
+        $vg = isset($vg['q']) ? $vg['q'] : null;
 
+        $vu = explode("/", $vu);
+
+        // Variável retorno
+        $response_final = array('header' => '', 'end' => '');
+
+        // Retorna JS
+        if( ($vu[1]==='script.js') ){
+
+            $response_final['header'] = 'text/javascript';
+            $response_final['end'] = file_get_contents('script.js');
+
+            return $response_final;
+        }
+
+        // Retorna CSS
+        if( ($vu[1]==='style.css') ){
+
+            $response_final['header'] = 'text/css';
+            $response_final['end'] = file_get_contents('style.css');
+
+            return $response_final;
+        }
+
+        // Retorna INDEX
+        if( ($vu[1]==='') ){
+
+            $response_final['header'] = 'text/html';
+            $response_final['end'] = file_get_contents('index.html');
+
+            return $response_final;
+        }
+
+        // Valida dados POST
         if( valid_var($vp) ){
 
-            return '{"err": "01", "msg":"Erro ao processar relatório. Certifique-se que você enviou somente textos nos campos"}';
+            $response_final['header'] = 'application/json';
+            $response_final['end'] = '{"err": "01", "msg":"Erro ao processar relatório. Certifique-se que você enviou somente textos nos campos"}';
 
+            return $response_final;
         }
 
-        if( ($vu[1] === '') ){
+        $vs = !vvar($vu);
 
-            $file = 'index.html';
-
-            $current = file_get_contents($file);
-
-            return $current;
-        }
-
+        // Retorna POST
         if( ($vm === 'POST') && ($vu[1] === 'veiculos') ){
 
-            var_dump($vp);
+            $response_final['header'] = 'application/json';
+            $response_final['end'] =  getpost($vm,$vs,$vp,$vg);
 
-            return getpost(
-                $vm,
-                !vvar($vu),
-                $vp,
-                $vg["q"]
-            );
-
+            return $response_final;
         }
 
-        if( ($vm === 'GET') && ($vu[1] === 'veiculos') && (!vvar($vu)) ){
+        // Retorna GET
+        if( ($vm === 'GET') && ($vu[1] === 'veiculos') && ( $vs ) ){
 
-            return getpost(
-                $vm,
-                !vvar($vu),
-                $vp,
-                $vg["q"]
-            );
+            $response_final['header'] = 'application/json';
+            $response_final['end'] =  getpost($vm,$vs,$vp,$vg);
 
+            return $response_final;
         }
 
-        if( ($vm === 'GET') && (vvar($vu)) && (isset($vg["q"])) ){
+        // Retorna GET - BUSCA USER
+        if( ($vm === 'GET') && (!$vs) && (isset($vg)) ){
 
-            return getpost(
-                $vm,
-                !vvar($vu),
-                $vp,
-                $vg["q"]
-            );
+            $response_final['header'] = 'application/json';
+            $response_final['end'] =  getpost($vm,$vs,$vp,$vg);
 
+            return $response_final;
         }
+
+        $response_final['header'] = 'application/json';
+        $response_final['end'] = '{"err": "05", "msg":"FIM"}';
+        return $response_final;
     }
 
     function vvar($secValue){
 
         return isset($secValue[2]) ? true : false;
-
     }
 
     function valid_var($dt){
@@ -73,11 +94,13 @@
             foreach ($dt as $varv) {
 
                 if( gettype($varv) != 'string' ){
+
                     return true;
+
                 }
 
             }
         }
-        return false;
 
+        return false;
     }
