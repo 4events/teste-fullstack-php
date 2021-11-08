@@ -6,16 +6,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css">
 
   <title>:: GetPostCARROS ::</title>
 </head>
 
 <body class="bg-light pt-5">
-
-  <nav class="navbar fixed-top navbar-danger bg-danger shadow">
+  <nav class="navbar navbar-danger fixed-top bg-danger shadow">
     <div class="container">
       <a class="navbar-brand mx-5 px-5 text-light">GetPostCARROS</a>
       <form class="d-flex mx-5">
@@ -43,23 +41,16 @@
     </div>
   </div>
 
-
   <div class="container-fluid">
     <div class="row">
       <div class="col px-0">
         <div class="accordion accordion-flush bg-white border shadow-sm" id="accordionFlush">
           <div class="container datas-db">
-
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-
 
   <!-- Modal -->
   <div class="modal fade bg-danger" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -118,7 +109,6 @@
     </div>
   </div>
 
-
   <footer class="footer mt-5">
     <div class="container">
       <p class="text-center text-muted small">
@@ -127,132 +117,7 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script>
-    $(document).ready(function(){
-        let countR = 0;
-        $.ajax({url: "http://localhost:9502/veiculos", success: function(result){
-          result.forEach(function(item){
-            countR++;
-            $(".datas-db").append( 
-              '<div class="accordion-item data-db">'+
-                '<h5 class="accordion-header px-5 py-3" id="flush-heading'+countR+'">'+
-                  '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"'+
-                    'data-bs-target="#flush-collapse'+countR+'" aria-expanded="false" aria-controls="flush-collapse'+countR+'">'+
-                    '<div class="row justify-content-between">'+
-                      '<div class="col-auto">'+
-                        'Modelo: <span class="text-muted">'+item.modelo+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Fabricante: <span class="text-muted">'+item.modelo+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Ano: <span class="text-muted">'+item.ano+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Vendido: <span class="text-muted">'+( item.vendido == 1 ? "Sim" : "não" )+'</span>'+
-                      '</div>'+
-                    '</div>'+
-                  '</button>'+
-                '</h2>'+
-                '<div id="flush-collapse'+countR+'" class="accordion-collapse collapse bg-light rounded-bottom border shadow-sm  px-5 py-1 mx-5 mb-3" aria-labelledby="flush-heading'+countR+'"'+
-                  'data-bs-parent="#accordionFlush">'+
-                    '<div class="row justify-content-start p-4">'+
-                      '<div class="col-auto">'+
-                        'Descricao: <br> <span class="text-muted">'+item.descricao+'</span>'+
-                      '</div>'+
-                    '</div>'+
-                '</div>'+
-              '</div>'
-            );
-          });
-        }});
-
-      $("#src").keyup(function(){
-        let countR = 0;
-        $.ajax({url: "http://localhost:9502/veiculos/find?q="+$("#src").val(), success: function(result){
-          $(".data-db").remove();
-          if (result.err == "03"){
-            $(".datas-db").append( 
-              '<div class="accordion-item data-db">'+
-                '<h5 class="text-center p-5">'+
-                  '<span class="text-muted">'+result.msg+'</span>'+
-                '</h5>'+
-              '</div>'
-            );
-            return false;
-          }
-          result.forEach(function(item){
-            countR++;
-            $(".datas-db").append( 
-              '<div class="accordion-item data-db">'+
-                '<h5 class="accordion-header px-5 py-3" id="flush-heading'+countR+'">'+
-                  '<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"'+
-                    'data-bs-target="#flush-collapse'+countR+'" aria-expanded="false" aria-controls="flush-collapse'+countR+'">'+
-                    '<div class="row justify-content-between">'+
-                      '<div class="col-auto">'+
-                        'Modelo: <span class="text-muted">'+item.modelo+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Fabricante: <span class="text-muted">'+item.modelo+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Ano: <span class="text-muted">'+item.ano+'</span>'+
-                      '</div>'+
-                      '<div class="col-auto">'+
-                        'Vendido: <span class="text-muted">'+( item.vendido == 1 ? "Sim" : "não" )+'</span>'+
-                      '</div>'+
-                    '</div>'+
-                  '</button>'+
-                '</h2>'+
-                '<div id="flush-collapse'+countR+'" class="accordion-collapse collapse bg-light rounded-bottom border shadow-sm  px-5 py-1 mx-5 mb-3" aria-labelledby="flush-heading'+countR+'"'+
-                  'data-bs-parent="#accordionFlush">'+
-                    '<div class="row justify-content-start p-4">'+
-                      '<div class="col-auto">'+
-                        'Descricao: <br> <span class="text-muted">'+item.descricao+'</span>'+
-                      '</div>'+
-                    '</div>'+
-                '</div>'+
-              '</div>'
-            );
-          });
-        }});
-      });
-    });
-
-    $('#cadB').click(function(){
-      var forms = document.querySelectorAll('.validation-ok');
-      Array.prototype.slice.call(forms).forEach(function (form){
-        if (!form.checkValidity()) {
-          form.classList.add('was-validated');
-        }else{
-          form.classList.remove('was-validated');
-          let choices = [];
-          let es = document.getElementsByName('validVend');
-          for (let i=0;i<es.length;i++){
-            if ( es[i].checked ) {
-              choices.push(es[i].value);
-            }
-          }
-          let varbody = {
-              ano: $("#validaAno").val(),
-              modelo: $("#validaMod").val(),
-              fabricante: $("#validaFab").val(),
-              descricao: $("#validaDesc").val(),
-              vendido: (choices[0] === undefined ? "0" : "1")
-          };
-          $.post("http://localhost:9502/veiculos", JSON.stringify(varbody), function(result){
-            $('#staticBackdrop').modal('show');
-            setTimeout(() => {document.location.reload(true);}, 4000);            
-          });
-        }
-      })
-    });
-  </script>
+  <script src="script.js" type="text/javascript"></script>
 </body>
 
 </html>
