@@ -8,6 +8,29 @@ Se você não sabe o que é fazer um "Forke" ou um "PR", pesquise. Valorizamos m
 
 **Lembre-se: atualize este README informando como instalar e executar seu projeto.**
 
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+## Como instalar
+
+    Para realizar a instalação é simples:
+
+        Tenha instalado e funcionando o swoole na máquina.
+        
+        Descompacte os arquivos.
+        
+        Importe o arquivo dbt_vcl.sql e dbt_routines.sql para o seu MySQL.
+        
+        Realize as alterações referentes a login/senha/porta de seu MySQL no arquivo conn.php
+        
+        Execute o arquivo 'Server.php'.
+        
+
+    E pronto!
+
+    Agora é só acessar o endereço http://localhost:9502 pelo navegador .
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 ## Missão backend
 
 Desenvolver uma **API JSON RESTful** em **Swoole PHP ( https://www.swoole.co.uk/ )**, que utilize os métodos `GET` e `POST`.
