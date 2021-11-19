@@ -62,7 +62,7 @@
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content bg-cinza">
-                            <form action="#" name="frmAddVeiculo" method="post" id="frmAddVeiculo">
+                            <form name="frmAddVeiculo" method="post" id="frmAddVeiculo">
                                 <div class="modal-header border-0">
                                     <h5 class="modal-title pt-2 fs-3 mb-3" id="mdlAddVeiculoLabel">Novo Veículo</h5>
                                 </div>
@@ -172,6 +172,13 @@
         myInput.focus()
     })
 
+    function limpaModal(){
+        (document).getElementById('txtVeiculo').value = '';
+        (document).getElementById('txtMarca').value = '';
+        (document).getElementById('txtDescricao').value = '';
+        (document).getElementById('txtAno').value = '';
+    }
+
     $('#frmAddVeiculo').submit(function (e){
         e.preventDefault();
         var frm = $(this);
@@ -184,6 +191,7 @@
                 alert('Dados do novo veiculo cadastrados com sucesso!');
             },
         });
+        limpaModal();
         $('#btnFecharAdd').click();
         $('#txtBusca').innerText = '';
         $('#frmBusca').submit();
