@@ -68,3 +68,16 @@ Tudo que for feito em adicional, se for somar ao projeto, contará pontos positi
 ## Dúvida
 
 Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+
+---
+
+## Ricardo Vieira
+## Instalação
+`composer update`
+
+## Execução
+`php public/swoole-server.php`
+
+## Navegação
+`http://0.0.0.0:8080/` ou `http://localhost:8080/`
+

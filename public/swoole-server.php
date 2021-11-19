@@ -32,8 +32,6 @@ $rotas = [
 $servidor->on('request',
     function(Request $request, Response $response) use ($container,$rotas){
 
-    //var_dump($request->server['request_method']);
-
     $path = $request->server['path_info'] ?? '/';
     $method = $request->server['request_method'] ?? 'GET';
 
@@ -62,10 +60,6 @@ $servidor->on('request',
 
     $controllerClass = $rotas[$path];
 
-//    var_dump($path);
-//    var_dump($method);
-//    var_dump($controllerClass);
-
     $serverRequest = (new ServerRequest(
         method: $request->getMethod(),
         uri: $request->server['request_uri'],
@@ -79,7 +73,6 @@ $servidor->on('request',
 
     /** @var RequestHandlerInterface $controllerInstance */
     $controllerInstance = $container->get($controllerClass);
-    //$controllerInstance = $container->get(Veiculos::class);
 
     $responsePsr7 = $controllerInstance->handle($serverRequest);
 

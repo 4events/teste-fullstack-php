@@ -22,17 +22,10 @@ class TrazVeiculos implements RequestHandlerInterface
 
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-
-        //var_dump($request->getQueryParams());
-
         $veiculoChave = ($request->getQueryParams()['nome']);
-
 
         $veiculo = explode('=',$veiculoChave);
         $veiculoNome = $veiculo[1];
-
-//        var_dump($veiculoChave);
-//        var_dump($veiculoNome);
 
         $qb = $this->repositorio->createQueryBuilder('v');
         $qb
@@ -41,8 +34,6 @@ class TrazVeiculos implements RequestHandlerInterface
             ->setParameter('veiculo','%'.$veiculoNome.'%');
 
         $arrayVeiculos = $qb->getQuery()->getResult();
-
-//        var_dump($arrayVeiculos);
 
         $html = $this->renderizaHtml(
             'list-veiculos.php',

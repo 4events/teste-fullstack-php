@@ -21,11 +21,6 @@ class GravaVeiculo
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $novoVeiculo = $request->getParsedBody();
-        //var_dump($request->getParsedBody());
-        //var_dump($request->getMethod());
-        //var_dump($novoVeiculo['txtVeiculo']);
-        //var_dump($novoVeiculo['txtDescricao']);
-        //var_dump($novoVeiculo['txtAno']);
 
         $vendido = 0;  // off
         if (isset($novoVeiculo['txtVendido'])) {
@@ -47,8 +42,6 @@ class GravaVeiculo
         $entityManager->flush();
 
         $html = "[{'status:success'}]";
-        //var_dump($veiculo);
-        echo 'salvei sim';
 
         return new Response(200,[],$html);
 

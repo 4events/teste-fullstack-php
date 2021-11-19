@@ -153,6 +153,17 @@
 
 
 <script type="text/javascript">
+    $(document).ready(function() {
+        getFirst();
+    })
+
+    /*
+    * Pega o primeiro item da lista de veiculos e simula um click para trazer o detalhe
+    */
+    function getFirst() {
+        var myItem = $("#lista-veiculos li").first();
+        myItem.click();
+    }
 
     var myModal = document.getElementById('mdlAddVeiculo')
     var myInput = document.getElementById('txtVeiculo')
@@ -164,24 +175,18 @@
     $('#frmAddVeiculo').submit(function (e){
         e.preventDefault();
         var frm = $(this);
-        //console.log( frm.serialize() );
-
         $.ajax({
             url: "veiculos",
             type: "POST",
             data: frm.serialize(),
             dataType: "json",
             success: function (data){
-                $('#btnFecharAdd').click();
                 alert('Dados do novo veiculo cadastrados com sucesso!');
-                $('#txtBusca').innerText = '';
-                $('#frmBusca').submit();
             },
-            error: function (data){
-                alert('OPS! algo deu errado no cadastro deste veiculo');
-            }
         });
-        //console.log( $('#txtBusca').innerText );
+        $('#btnFecharAdd').click();
+        $('#txtBusca').innerText = '';
+        $('#frmBusca').submit();
     });
 
 
@@ -207,12 +212,13 @@
                         "</li>");
 
                 });
+
+                getFirst();
             }
         });
     })
 
     $(document).on('click', '#lista-veiculos li', function (event) {
-        //console.log(event.currentTarget.id);
         $.ajax({
             url: "veiculos/id",
             data: {veiculo: event.currentTarget.id},

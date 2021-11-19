@@ -1,6 +1,7 @@
 create table veiculo (
     id int auto_increment primary key,
     veiculo varchar(100) not null,
+    marca text null,
     ano int not null,
     descricao text null,
     vendido tinyint null,

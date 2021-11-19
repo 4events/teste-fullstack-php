@@ -26,8 +26,6 @@ class BuscaVeiculo implements RequestHandlerInterface
         $veiculo = explode('-',$veiculoChave);
         $veiculoId = $veiculo[1];
 
-        //var_dump($veiculoId);
-
         $html = $this->renderizaHtml(
             'card-veiculo.php',
             [
