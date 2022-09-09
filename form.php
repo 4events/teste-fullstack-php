@@ -54,10 +54,10 @@ include('conexao.php');
 		
 
 	<label>Veiculo</label><br><input type="text" name="veiculo"><br>
-	<label>Ano</label><br><input type="email" name="ano"><br>
+	<label>Ano</label><br><input type="month" name="ano"><br>
 	<label>Descrição</label><br><textarea name="descricao" id="" cols="30" rows="05"></textarea><br>
-	<label>Vendido</label><br><input type="text" name="vendido"><br>
-	<label>Created</label><br><input type="text" name="created"><br><br>
+	<label>Vendido</label><br><input type="checkbox" name="vendido"><br>
+	<label>Created</label><br><input type="datetime-local" name="created"><br><br>
 	<div class="mb-3"><button type="submit" class="btn btn-primary">Cadastrar</button></div>
 		</div>
 	</form>

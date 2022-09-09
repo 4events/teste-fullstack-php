@@ -7,7 +7,7 @@ $veiculo = mysqli_real_escape_string($mysqli, $_GET['veiculo']);
 $ano = mysqli_real_escape_string($mysqli, $_GET['ano']);
 
 
-$result = mysqli_query($mysqli,"SELECT * FROM veiculos WHERE veiculo LIKE'%$cod_veiculo%' ");
+$result = mysqli_query($mysqli,"SELECT * FROM veiculos WHERE veiculo LIKE'%$veiculo%' ");
 
 
 
