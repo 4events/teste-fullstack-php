@@ -1,0 +1,6 @@
+# dependencies
+site-dev/node_modules/
+
+# dist
+site-dev/dist/
+
