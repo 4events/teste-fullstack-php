@@ -1,70 +1,79 @@
-# Teste fullstack PHP
+# 4.events processo seletivo
 
-Leia primeiro todo o projeto, faça sua estimativa de horas para o desenvolvimento e envie um email com o título `[Teste Fullstack PHP] Estimativa` para rh@4.events
+Este projeto necessita do `docker` e `docker compose` instalados para funcionar.
 
-Forke este projeto, faça o desenvolvimento e quando finalizar faça um PR aqui. Envie um email com o título `[Teste Fullstack PHP] Finalizado` para rh@4.events com o link do seu PR.
+### Instalação docker e docker compose:
+Instalação do docker no Ubuntu (referência):
 
-Se você não sabe o que é fazer um "Forke" ou um "PR", pesquise. Valorizamos muito a proatividade.
+https://docs.docker.com/engine/install/ubuntu/
 
-**Lembre-se: atualize este README informando como instalar e executar seu projeto.**
 
-## Missão backend
-
-Desenvolver uma **API JSON RESTful** em **Swoole PHP ( https://www.swoole.co.uk/ )**, que utilize os métodos `GET` e `POST`.
-
-**Curiosidade:** você sabia que uma API construída em Swoole PHP é mais rápida que Node, Go, Python e qualquer outra stack backend? Se não, descobriu agora :)
-
-### Especificação
-
-Monte uma base de veículo com a seguinte estrutura:
-
+### Subir o projeto
+Na raíz do projeto digite:
+```sh
+sudo docker-compose up
 ```
-veiculo:   string
-ano:       integer
-descricao: text
-vendido:   bool
-created:   datetime
+aguardar até o pull dos containers e o projeto fique up!
+
+
+### Restaurar o projeto
+Se for necessário restaurar o projeto para o estado inicial então remova todas as imagens docker usando o seguinte comando:
+```sh
+sudo docker-compose rm
+```
+e depois repita o comando `sudo docker-compose up`
+
+
+### Acessar o site do projeto
+Se tudo estiver certo você pode digitar no seu navegador:
+```
+localhost:9090
+```
+e já verá a página de listagem de veículos.
+
+### Acessar a API (Swoole)
+A API em Swoole está rodando em um container separado:
+```
+localhost:9501
 ```
 
-Utilize **MySQL** para armazenar os dados que a **API** irá consumir. Deixe o export (.sql) do banco de dados junto dos arquivos.
+#### Endpoints da API
 
-### API endpoints
+##### GET
 
-`GET /veiculos`
+`GET localhost:9501/veiculos/`:
+Listar todos os veículos cadastrados
 
-Retorna todos os veículos
+`GET localhost:9501/veiculos/find?q=string`:
+Procurar pelo veículo pelo `string`
 
----
+##### POST
 
-`GET /veiculos/find`
+`POST localhost:9501/veiculos`:
+Cadastrar um veículo passando um objeto JSON:
+```
+{
+    marca    : integer,
+    veiculo     : string,
+    ano         : number,
+    descricao   : string,
+    vendido     : boolean,
+}
+```
 
-Retorna os veículos de acordo com o termo passado parâmetro `q`
+### Acessar o phpmyadmin 
+No navegador digitar:
+```
+localhost:8081
 
----
+Server: mysql
+Username: username
+Password: password
+```
 
-`POST /veiculos`
+### Possíveis melhorias
 
-Adiciona um novo veículo
-
-
-## Missão frontend
-
-Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples.
-
-### Especificação
-
-- Cross browser support (IE11+)
-- Consumir **API** criada acima
-- Pode usar jQuery a vontade!
-- Criar uma tela que tenha...
-    - Listagem de veículos
-    - Busca
-    - Formulário de novo veículo
-
-## Dica
-
-Tudo que for feito em adicional, se for somar ao projeto, contará pontos positivos a você. Agora, cuidado: se você ultrapassar MUITO as horas que estipulou inicialmente, contará muitos pontos NEGATIVOS.
-
-## Dúvida
-
-Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+- organização do código da api swoole e gerar log das requisicoes
+- adicionar ícone de loading no carregamento da lista de veículos
+- implementar validacao dos campos no frontend e no backend
+- UX e UI precisa ser melhorada
