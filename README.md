@@ -14,4 +14,3 @@ para outra página;
 - Projeto **responsivo para todos os simuladores de dispositivos móveis do google**, quando acontecer os testes, **favor recarregar a página para evitar bugs** :) ;
 - Para algumas telas menores, foi feito uma 'releitura' do design original para que fique bom para o usuário;
 - Nesse link tem um vídeo com todas as interações do projeto, seria interessante ver: https://www.awesomescreenshot.com/video/14617569?key=e74666ab1a9752efc6185e25a550c443 ;
-- E por último, espero que gostem da aplicação e da interação com a mesma :D
