@@ -1,0 +1,6 @@
+# dependencies
+site-src/node_modules/
+
+# dist
+site-src/dist/
+
