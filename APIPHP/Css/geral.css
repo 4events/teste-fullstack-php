@@ -1,0 +1,517 @@
+h1, h2, h3, h4, h5, h6, div, body, input, p, a{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body{
+    overflow: visible;
+    max-width:100%;
+    hyphens: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+hr{
+    width: calc(100vw - 100px);
+}
+.m2{
+    margin-top: 2px;
+}
+a{
+    text-decoration: none;
+}
+.flex{
+    display: flex;
+}
+.w50{
+    width: 50%;
+}
+.w100{
+    width: 100%;
+}
+.pb40{
+    padding-bottom: 40px;
+}
+.w100_20{
+    width: calc(100% - 60px);
+}
+.d-none{
+    display: none;
+}
+/* Classes */
+
+/* topo */
+.container{
+    background-color: #e4e4e4;
+    min-height: 100vh;
+}
+.topo{
+    width: calc(100vw - 100px);
+    padding: 0 50px;
+    height: 80px;
+    background-color: rgb(54, 65, 71);
+    display: flex;
+}
+.titulo_topo{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 50%;
+    font-size: 2.1em;
+    display: flex;
+}
+.img_logo{
+    height: 50px;
+}
+.txt_titulo_topo{
+    padding: 7px 0 7px 30px;
+    color: #fff;
+}
+
+
+.busca_topo{
+    width: 50%;
+    display: flex;
+}
+.input_busca{
+    width: calc(100% - 90px);
+    height: 80px;
+    background-color: #2a3138;
+    color: #fff;
+    font-size: 1.2em;
+    padding-left: 15px;
+}
+.btn_busca{
+    background-color: #2a3138;
+    border: 0px;
+}
+.btn_busca:hover{
+    cursor: pointer;
+    background-color: #22272c;
+}
+.btn_busca img{
+    height: 50px;
+    padding: 15px;
+}
+
+/* middle */
+.middle{
+    width: calc(100vw - 100px);
+    padding: 0 50px;
+    display: flex;
+    padding-top: 72px;
+    padding-bottom: 20px;   
+}
+.middle_title{
+    width: 50%;
+    color: #3c464c;
+}
+.adicionar{
+    width: 50%;
+}
+.btn_add{
+    background-color: #3c464c;
+    border: solid 2px #3c464c;
+    color: #fff;
+    font-size: 1.3em;
+    width: 27px;
+    overflow: hidden;
+    height: 28px;
+    border-radius: 50%;
+    float: right;
+}
+.btn_add:hover{
+    width: 300px;
+    text-align: center;
+    border-radius: 8px;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+/* conteudo */
+
+.conteudo{
+    width: calc(100vw - 100px);
+    padding: 0 50px;
+    display: flex;
+}
+.c_title{
+    color: #3c464c;
+    font-size: 1.4em;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+.lista_veiculos{
+    width: 50%;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+.veiculo, .d_container{
+    width: calc(100% - 60px);
+    background-color: white;
+    padding: 15px;
+    font-size: 1em;
+}
+.veiculo{
+    display: flex;
+    margin-bottom: 5px;
+}
+.veiculos_infos{
+    width: calc(100% - 100px);
+}
+.veiculos_img{
+    height: 36px;
+    transform: translateY(13px);
+}
+.veiculos_img img{
+    height: 36px;
+}
+.v_info{
+    color: #2f8062;
+}
+.v_ano{
+    color: #7d8487;
+}
+.veiculo:hover{
+    cursor: pointer;
+    background-color:  #f1f2f0;
+}
+
+.detalhes{
+    width: calc(50% - 20px);
+    padding-left: 20px;
+}
+.marca_ano{
+    width: 100%;
+    display: flex;
+}
+.d_nome{
+    color: #2f8062;
+    font-size: 1.2em;
+}
+.d_marca{
+    color: #7d8487;
+}
+.d_ano{
+    color: #7d8487;
+}
+.d_marca, .d_ano{
+    width: 50%;
+    padding: 20px 0;
+}
+.d_hist{
+    color: #000;
+}
+.btn_editar{
+    background-color: #45535a;
+    border: solid 2px #45535a;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 10px 36px 10px 45px;
+}
+.btn_editar img{
+    position: absolute;
+    transform: translate(-37px, -2px);
+    height: 30px;
+}
+.btn_editar:hover{
+    cursor: pointer;
+    border: 2px solid #282f33;
+    transition: all .3s;
+}
+
+.img_edit{
+    position: absolute;
+    right: 126px;
+    width: 38px;
+    padding-top: 6px;
+}
+/* rodape */
+.rodape{
+    width: calc(100vw - 100px);
+    padding: 20px 50px;
+    font-size: 1.2em;
+}
+
+
+/* MODAIS */
+.modalNewCar{
+    display: none;
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(71, 81, 86, 0.95);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+.form_newCar{
+    width: 70%;
+    background-color: #e2e4e1;
+    margin: auto;
+    padding: 40px;
+    font-size: 1.2em;
+}
+.title_form{
+    font-size: 2em;
+    padding-bottom: 60px;
+    width: 100%;
+}
+.form_newCar input{
+    background-color: #e2e4e1;
+    font-size: 1em;
+    padding: 5px;
+    border-bottom: 1px solid #45535a;
+}
+.form_newCar input:focus{
+    border-bottom: 1px solid #5d89a7;
+    outline: none;
+}
+.busca_topo input:focus{
+    outline: none;
+}
+
+.form_newCar button{
+    font-size: 1em;
+    padding: 10px;
+    width: 140px;
+    background-color: #45535a;
+    color: #fff;
+    border: 0px;
+    float: right;
+    margin-left: 20px;
+}
+.form_newCar button:hover{
+    cursor: pointer;
+    background-color: #2d363a;
+    transition: all .3s;
+}
+.form_newCar textarea{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 300px;
+    padding: 10px;
+    border: 0px;
+    font-size: 1em;
+    border-bottom: 1px solid #45535a;
+    background-color: #e2e4e1;
+}
+.form_newCar textarea:focus{
+    border-bottom: 1px solid #5d89a7;
+    outline: none;
+}
+
+
+
+.switch {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+  }
+  
+  .switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+  }
+  .switch--shadow + label {
+    padding: 2px;
+    width: 47px;
+    height: 13px;
+    background-color: #dddddd;
+    border-radius: 60px;
+    padding-top: 3px;
+    margin-top: 17px;
+  }
+
+  .switch--shadow + label:before,
+.switch--shadow + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: '';
+}
+.switch--shadow + label:before {
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 60px;
+  transition: all 0.4s;
+}
+.switch--shadow + label:after {
+  width: 18px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+}
+
+.switch--shadow:checked + label:before {
+    background-color: #8ce196;
+}
+    .switch--shadow:checked + label:after {
+    transform: translateX(32px);
+}
+
+
+  /* Modal após post */
+.modalPosPost{
+    display: none;
+    position: absolute;
+    z-index: 101;
+    width: 100%;
+    height: 100%;
+    background: rgba(71, 81, 86, 0.95);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+.infoPosPost{
+    width: 200px;
+    background-color: #e2e4e1;
+    margin: auto;
+    padding: 15px;
+    font-size: 1.2em;
+    transform: translateY(50%);
+}
+.resultadoOp{
+    text-align: center;
+    padding: 30px 10px;
+}
+.infoPosPost button{
+    width: 100px;
+    font-size: 1em;
+    background-color: #45535a;
+    color: #fff;
+    border: 0px;
+    padding: 10px 0;
+    margin: 0 51px;    
+}
+.infoPosPost button:hover{
+    background-color: #2d363a;   
+    cursor: pointer;
+}
+
+/* Tirando setas do input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+/* Estilo de barra de rolagem */
+::-webkit-scrollbar{
+    width: 10px;
+    
+}
+::-webkit-scrollbar-track{
+    
+    border-radius: 8px;
+    background: #ffffff;
+    
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(54, 65, 71);
+    border-radius: 8px; 
+    
+}
+
+textarea:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+
+
+@media screen and (max-width:900px){
+    body{
+        overflow-x: hidden;
+    }
+    .container{
+        height: auto;
+    }
+    .conteudo{
+        display: block;
+    }
+    .middle{
+        padding: 20px 0 20px 50px;
+    }
+    .lista_veiculos{
+        width: 100%;
+        max-height: 400px;
+    }
+    .detalhes{
+        width: calc(100% - 10px);
+        padding-left: 0px;
+    }
+    .img_edit{
+        transform: translateX(-36px);
+    }
+
+    /* modal */
+    .form_newCar{
+        padding: 20px;
+        width: calc(100% - 50px);
+    }
+    .title_form{
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .form_newCar textarea{
+        max-height: 100px;
+        max-width: calc(100% - 10px);
+        min-width: calc(100% - 10px);
+    }
+    .div_rev{
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:420px){
+    .veiculos_infos{
+        width: calc(100% - 40px);
+    }
+    .img_edit{
+        transform: translateX(19px);
+    }
+    .btn_add:hover {
+        width: 138px;
+        height: 63px;
+    }
+    .topo{
+        padding: 0px;
+        width: 100%;
+    }
+    .input_busca{
+        width: calc(100% - 70px);
+    }
+    .btn_busca img {
+        padding: 5px;
+    }
+
+}
+
+@media screen and (max-width:412px){
+    .txt_titulo_topo {
+        padding: 7px 0 7px 2px;
+        font-size: 0.94em;
+    }
+    .busca_topo {
+        width: 63%;
+    }
+    .input_busca{
+        padding-left: 5px;
+        margin-left: 8px;
+    }
+}
+@media screen and (max-width:360px){
+    .txt_titulo_topo {
+        font-size: 0.8em;
+    }
+    .busca_topo {
+        font-size: 1em;
+    }
+    .btn_editar{
+        padding: 10px 12px 10px 45px;
+    }
+}
