@@ -1,70 +1,31 @@
-# Teste fullstack PHP
+# Meu Projeto
 
-Leia primeiro todo o projeto, faça sua estimativa de horas para o desenvolvimento e envie um email com o título `[Teste Fullstack PHP] Estimativa` para rh@4.events
-
-Forke este projeto, faça o desenvolvimento e quando finalizar faça um PR aqui. Envie um email com o título `[Teste Fullstack PHP] Finalizado` para rh@4.events com o link do seu PR.
-
-Se você não sabe o que é fazer um "Forke" ou um "PR", pesquise. Valorizamos muito a proatividade.
-
-**Lembre-se: atualize este README informando como instalar e executar seu projeto.**
-
-## Missão backend
-
-Desenvolver uma **API JSON RESTful** em **Swoole PHP ( https://www.swoole.co.uk/ )**, que utilize os métodos `GET` e `POST`.
-
-**Curiosidade:** você sabia que uma API construída em Swoole PHP é mais rápida que Node, Go, Python e qualquer outra stack backend? Se não, descobriu agora :)
-
-### Especificação
-
-Monte uma base de veículo com a seguinte estrutura:
-
-```
-veiculo:   string
-ano:       integer
-descricao: text
-vendido:   bool
-created:   datetime
-```
-
-Utilize **MySQL** para armazenar os dados que a **API** irá consumir. Deixe o export (.sql) do banco de dados junto dos arquivos.
-
-### API endpoints
-
-`GET /veiculos`
-
-Retorna todos os veículos
-
----
-
-`GET /veiculos/find`
-
-Retorna os veículos de acordo com o termo passado parâmetro `q`
-
----
-
-`POST /veiculos`
-
-Adiciona um novo veículo
+ Composer install para instalar as dependências do projeto a partir do composer.json
+ algumas extensões do php devem estar instaladas na máquina, como pdp-mysql Pdo-mysql (é o nome certo)
 
 
-## Missão frontend
+ **Instalar o composer:**
+ Instalação Local:
+ php composer-setup.php
 
-Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples.
+ Instalação Global:
+ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
-### Especificação
-
-- Cross browser support (IE11+)
-- Consumir **API** criada acima
-- Pode usar jQuery a vontade!
-- Criar uma tela que tenha...
-    - Listagem de veículos
-    - Busca
-    - Formulário de novo veículo
-
-## Dica
-
-Tudo que for feito em adicional, se for somar ao projeto, contará pontos positivos a você. Agora, cuidado: se você ultrapassar MUITO as horas que estipulou inicialmente, contará muitos pontos NEGATIVOS.
-
-## Dúvida
-
-Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+ Você verá este resultado:
+ All settings correct for using Composer
+ Downloading...
+ Composer (version 1.10.5) successfully installed to: /usr/local/bin/composer
+ Assim que tiver terminado, remova o instalador:
+ php -r "unlink('composer-setup.php');"
+ Teste a instação do Composer:
+ composer
+ A linha de comando vai retornar o seguinte resultado:
+       ______
+  / ____/___ ____ ___ ____ ____ ________ _____
+ / / / __ / __ `__ / __ / __ / ___/ _ / ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ (__ ) __/ /
+____/____/_/ /_/ /_/ .___/____/____/___/_/
+                  /_/
+Composer version 1.10.5 2020-02-12 16:20:11
+ entrar no arquivo de config e incluir as credenciais dos bancos de dados é necessário realizar a instalação do banco de dados.
+Função editar foi iniciada mas ainda não foi finalizada.
