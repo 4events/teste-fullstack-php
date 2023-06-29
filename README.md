@@ -1,4 +1,4 @@
-# Teste fullstack PHP
+# Teste Fullstack PHP
 
 Leia primeiro todo o projeto, faça sua estimativa de horas para o desenvolvimento e envie um email com o título `[Teste Fullstack PHP] Estimativa` para rh@4.events
 
@@ -6,7 +6,7 @@ Forke este projeto, faça o desenvolvimento e quando finalizar faça um PR aqui.
 
 Se você não sabe o que é fazer um "Forke" ou um "PR", pesquise. Valorizamos muito a proatividade.
 
-**Lembre-se: atualize este README informando como instalar e executar seu projeto.**
+**Lembre-se: atualize este README informando como instalar e executar seu projeto. O README também deve conter se você conseguiu atingir 100% os objetivos deste projeto. Se a sua missão backend funciona, se a sua missão frontend funciona, dificuldades, etc.**
 
 ## Missão backend
 
@@ -49,7 +49,7 @@ Adiciona um novo veículo
 
 ## Missão frontend
 
-Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples.
+Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples. Melhorar este desenho é opcional, mas será um grande diferencial, afinal, este desenho é bem feio, não é mesmo? :) Mas, lembre-se que o código deverá ser seu. Nada de copiar e colar ou perguntar ao Chat GPT para dar o código pronto.
 
 ### Especificação
 
@@ -63,7 +63,7 @@ Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pas
 
 ## Dica
 
-Tudo que for feito em adicional, se for somar ao projeto, contará pontos positivos a você. Agora, cuidado: se você ultrapassar MUITO as horas que estipulou inicialmente, contará muitos pontos NEGATIVOS.
+Tudo que for feito em adicional, se for somar ao projeto, contará pontos positivos a você.
 
 ## Dúvida
 
