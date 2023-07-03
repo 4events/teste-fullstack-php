@@ -49,7 +49,7 @@ Adiciona um novo veículo
 
 ## Missão frontend
 
-Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples. Melhorar este desenho é opcional, mas será um grande diferencial, afinal, este desenho é bem feio, não é mesmo? :) Mas, lembre-se que o código deverá ser seu. Nada de copiar e colar ou perguntar ao Chat GPT para dar o código pronto.
+Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar a estrutura do projeto, bem simples. Melhorar este desenho é opcional, mas será um grande diferencial, afinal, este desenho é bem feio, não é mesmo? :) Mas, lembre-se que o código deverá ser seu. Nada de copiar e colar ou perguntar ao Chat GPT para dar o código pronto.
 
 ### Especificação
 
