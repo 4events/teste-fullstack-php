@@ -1,70 +1,58 @@
 # Teste Fullstack PHP
 
-Leia primeiro todo o projeto, faça sua estimativa de horas para o desenvolvimento e envie um email com o título `[Teste Fullstack PHP] Estimativa` para rh@4.events
-
-Forke este projeto, faça o desenvolvimento e quando finalizar faça um PR aqui. Envie um email com o título `[Teste Fullstack PHP] Finalizado` para rh@4.events com o link do seu PR.
-
-Se você não sabe o que é fazer um "Forke" ou um "PR", pesquise. Valorizamos muito a proatividade.
-
-**Lembre-se: atualize este README informando como instalar e executar seu projeto. O README também deve conter se você conseguiu atingir 100% os objetivos deste projeto. Se a sua missão backend funciona, se a sua missão frontend funciona, dificuldades, etc.**
-
-## Missão backend
-
-Desenvolver uma **API JSON RESTful** em **Swoole PHP ( https://www.swoole.co.uk/ )**, que utilize os métodos `GET` e `POST`.
-
-**Curiosidade:** você sabia que uma API construída em Swoole PHP é mais rápida que Node, Go, Python e qualquer outra stack backend? Se não, descobriu agora :)
-
-### Especificação
-
-Monte uma base de veículo com a seguinte estrutura:
-
-```
-veiculo:   string
-ano:       integer
-descricao: text
-vendido:   bool
-created:   datetime
-```
-
-Utilize **MySQL** para armazenar os dados que a **API** irá consumir. Deixe o export (.sql) do banco de dados junto dos arquivos.
-
-### API endpoints
-
-`GET /veiculos`
-
-Retorna todos os veículos
-
----
-
-`GET /veiculos/find`
-
-Retorna os veículos de acordo com o termo passado parâmetro `q`
-
----
-
-`POST /veiculos`
-
-Adiciona um novo veículo
+### Ferramentas Utilizadas 
+- PHP 8.0.12
+- MariaDB 10.4.21
+- MySQL Workbench 6.3
+- Docker Desktop 4.20.0
+- VS Code
+- Swoole last version
+- Windows 11
+- GitHub Desktop 3.2.6
+- Postman 10.15.0
+- XAMPP 3.3.0
 
 
-## Missão frontend
+## Instalação e configuração api (BackEnd)
+O projeto backend está na pasta "4events".
 
-Desenvolver uma **UI (User Interface)** de acordo com o desenho que está na pasta [layout], no formato MVC puro, ou seja, não queremos que você use nenhuma framework pronta (Yii, Laravel, etc), é para você mesmo(a) montar o MVC, bem simples. Melhorar este desenho é opcional, mas será um grande diferencial, afinal, este desenho é bem feio, não é mesmo? :) Mas, lembre-se que o código deverá ser seu. Nada de copiar e colar ou perguntar ao Chat GPT para dar o código pronto.
+### Criação do banco de dados
+- Execute o XAMPP.
+- Crie uma base de dados chamada "4events", com o user "root" e senha "" (vazio).
+- Execute no gereciador do MySql de sua escolha o arquivo "4events_veiculos.sql" que está dentro da pasta "migration" do projeto.
 
-### Especificação
+### Instalação do código 
+- Copie a pasta 4events para qualquer pasta.
+- Inicie o Docker.
+- Abra o prompt de comando e navegue até a pasta 4events.
+- Execute o seguintes comandos na seguinte sequência:
+  - `docker build -f ./Dockerfile -t 4events-veiculos .`
+  - `docker run -d --name fullstack -p "90:8989" 4events-veiculos`
+- Verifique no Docker se um container chamado "fullstack" está em execução.
+- Pronto a api está instalada.
 
-- Cross browser support (IE11+)
-- Consumir **API** criada acima
-- Pode usar jQuery a vontade!
-- Criar uma tela que tenha...
-    - Listagem de veículos
-    - Busca
-    - Formulário de novo veículo
+## Configuração Front MVC (FrontEnd)
+O projeto frontend está na pasta "fullstack-4events-mvc".
+### Passos
+- Copie a pasta fullstack-4events-mvc para a pasta htdocs do XAMPP.
+- Reinicie o XAMPP.
+- Acesse no navegador:
+   - `http://localhost/fullstack-4events`
+- Pronto se estiver tudo ok, abriará a tela de gerenciamento de veículos.
 
-## Dica
+## Configuração Front AJAX (FrontEnd)
+O projeto frontend(AJAX) está na pasta "4events-frontend".
+### Passos
+- Copie a pasta "4events-frontend" para qualquer pasta.
+- Execute o arquivo "index.html" no navegador.
+- Pronto se estiver tudo ok, abriará a tela de gerenciamento de veículos.
 
-Tudo que for feito em adicional, se for somar ao projeto, contará pontos positivos a você.
-
-## Dúvida
-
-Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+## Observações
+- Nunca tinha visto Swoole.
+- Nunca precisei criar um MVC, sempre usei o Zend Framework e já fiz alguns projetos de estudos com o Laravel.
+- Tive muito problemas para conectar o Swoole no MySql no Docker, tive que usar o MySql do XAMPP.
+- Fiz um frontend adicional(AJAX), pois acho mais rápido de fazer.
+- Gostaria de ter mais tempo para trabalhar as mensagens de erro e sucesso, não consegui no front MVC, mas no front AJAX consegui fazer algumas.
+- Estou sem tempo, pois estou participando de outros processos seletivos. Estou virando noites!!
+- Caso não consiga executar os projetos ou qualquer dúvidas, fique a vontade para falar comigo, ficarei feliz em ajudar.
+- Uffa fim ;)
