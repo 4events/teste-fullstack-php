@@ -68,3 +68,39 @@ Tudo que for feito em adicional, se for somar ao projeto, contará pontos positi
 ## Dúvida
 
 Se tiver qualquer dúvida sobre esse teste, envie um email com o título `[Teste Fullstack PHP] O assunto que vc deseja` para rh@4.events
+
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+
+# Considerações
+
+Olá equipe da 4events,
+
+Em primeiro lugar, gostaria de agradecer pela oportunidade de participar do processo seletivo.
+
+Gostaria de informar que não consegui atingir o objetivo de criar uma API utilizando o framework Open Swoole.
+
+Quando o Vitor me informou sobre o teste, ele mencionou que algumas pessoas conseguiram entregar o projeto no mesmo dia. Com base nessa informação, estimei que seria possível entregar até o dia 24/03, levando em conta que algumas pessoas conseguiram fazer tão rapidamente. No entanto, ao iniciar o desenvolvimento, enfrentei diversos problemas, como erros ao executar a build do Dockerfile fornecido na documentação e outras imagens, o que me levou a tentar executar via WSL no Linux. No entanto, devido à minha falta de familiaridade com o framework e ao prazo apertado devido a projetos em andamento, percebi que não seria possível entregar o projeto no prazo estipulado. Eu poderia ter enviado um e-mail informando um novo prazo, mas não saberia quantificar o tempo necessário para concluir essa tarefa, já que sequer havia ouvido falar desse framework, e teria que estudá-lo primeiro antes de poder trabalhar com ele de forma eficiente. Assim, se informasse um novo prazo, não estaria sendo preciso nessa previsão.
+
+Embora não tenha conseguido realizar o que foi proposto no prazo, achei importante demonstrar meus conhecimentos e, por isso, decidi criar o projeto utilizando o Laravel. Sei que foi explicitamente solicitado o uso do Swoole e que isso pode desqualificar minha candidatura. No entanto, foi a única forma que encontrei para entregar o projeto dentro do prazo informado no e-mail. Consegui concluir todo o desafio proposto com as tecnologias que domino, mas ainda não possuo o conhecimento necessário para fazê-lo rapidamente na tecnologia mencionada, devido à curva de aprendizado da mesma.
+
+Entendo que meu projeto possivelmente será descartado, mas, de qualquer forma, convido vocês a darem uma olhada e, caso ainda haja interesse da empresa em prosseguir com o processo seletivo, coloco-me inteiramente à disposição.
+
+# Como rodar o projeto
+
+1 - Ter algum servidor PHP instalado. No meu caso utilizo o laragon
+https://laragon.org/download/index.html
+
+2 - Inicializar o servidor PHP
+
+3 - Instalar o laravel 
+composer global require laravel/installer
+
+4 - Configurar o banco de dados no arquivo .env na raiz do projeto (teste-fullstack-php/api/.env)
+
+5 - Importar o banco de dados "db_4events.sql"
+
+6 - Inicializar o servidor com o comando (teste-fullstack-php/api):
+php artisan serve
+
+7 - Abrir o arquivo index.html na pasta (teste-fullstack-php/app/index.html)

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./src/styles/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>
+        4event - Leandro Zanardo
+    </title>
+</head>
+
+<body>
+
+    <header class="header-nav">
+        <div class="header-nav-logo">
+            <i class="fa-solid fa-droplet mr-2"></i></i>FULLSTACK
+        </div>
+        <div class="header-nav-search">
+            <div class="input-group">
+                <input id="inputSearch" type="text" class="form-control" placeholder="BUSCA por um veículo"
+                    aria-label="BUSCA por um veículo">
+                <div class="input-group-append">
+                    <button id="btn-search" class="btn btn-outline-secondary btn-search" type="button">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+    </header>
+    <main id="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="main-title">
+                        VEÍCULO
+                    </h3>
+                </div>
+                <div class="col-6">
+                    <button id="btn-add-vehicle" class="btn btn-secondary btn-add float-right" data-toggle="modal"
+                        data-target="#addVehicleModal">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="row main-divider">
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Lista de Veículos</h5>
+                    <div id="main-list">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h5 class="mb-4">Detalhes</h5>
+                    <div id="main-details">
+                        <div class="main-details-card">
+                            <div class="row">
+                                <div class="col-12">
+                                    Clique em um veículo para ver sua descrição!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer id="footer">
+        <div class="row">
+            <div class="col-12">
+                <a href="https://www.linkedin.com/in/leandro-zanardo-92b418a4/" class="footer-link" target="_blank"
+                    rel="noopener noreferrer">Developed by Leandro Zanardo</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal" id="addVehicleModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <div class="modal-title">
+                                Novo Veículo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <form id="form-add-vehicle">
+                                <div class="form-row px-4">
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="inputVeiculo" class="input-label">Veículo</label>
+                                        <input type="text" class="form-control" id="inputVeiculo" placeholder="Veículo"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="inputMarca" class="input-label">Marca</label>
+                                        <input type="text" class="form-control" id="inputMarca" placeholder="Marca"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 mb-5">
+                                        <label for="inputAno" class="input-label">Ano</label>
+                                        <input type="text" class="form-control" id="inputAno" placeholder="Ano"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 mb-5 d-flex align-items-center">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="inputVendido">
+                                            <label class="custom-control-label" for="inputVendido">Vendido</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 mb-5">
+                                        <label for="inputDescricao" class="input-label">Descrição</label>
+                                        <textarea type="text" class="form-control" id="inputDescricao"
+                                            placeholder="Descrição" required></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="validateAddVehicleForm()">ADD</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="editVehicleModal" data-id="">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-body">
+                    <div class="row px-3">
+                        <div class="col-12">
+                            <div class="modal-title">
+                                Editar Veículo
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <form id="form-edit-vehicle">
+                                <div class="form-row px-4">
+                                    <input type="text" id="inputEditId" hidden>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="inputVeiculo" class="input-label">Veículo</label>
+                                        <input type="text" class="form-control" id="inputEditVeiculo"
+                                            placeholder="Veículo" required>
+                                    </div>
+                                    <div class="form-group col-md-6 mb-5">
+                                        <label for="inputMarca" class="input-label">Marca</label>
+                                        <input type="text" class="form-control" id="inputEditMarca" placeholder="Marca"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 mb-5">
+                                        <label for="inputAno" class="input-label">Ano</label>
+                                        <input type="text" class="form-control" id="inputEditAno" placeholder="Ano"
+                                            required>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6 mb-5 d-flex align-items-center">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="inputEditVendido">
+                                            <label class="custom-control-label" for="inputEditVendido">Vendido</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 mb-5">
+                                        <label for="inputDescricao" class="input-label">Descrição</label>
+                                        <textarea type="text" class="form-control" id="inputEditDescricao"
+                                            placeholder="Descrição" required></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="validateEditVehicleForm()">SAVE</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+
+    <!-- <script src="index.js"></script> -->
+
+    <script src="./src/scripts/main.js"></script>
+
+</body>
+
+</html>
