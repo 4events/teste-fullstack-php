@@ -1,0 +1,22 @@
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.list-group li {
+    cursor: pointer;
+}
+.list-group li:hover {
+    background-color: #ececec;
+}
+.data-vehicle {
+    display: grid;
+}
+.alert {
+    margin-top: 10px;
+}
+.alert-success, .alert-danger {
+    display: none;
+}
+.form-label {
+    margin-bottom:0;
+}
