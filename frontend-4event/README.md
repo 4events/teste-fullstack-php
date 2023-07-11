@@ -1,8 +1,8 @@
-# Teste Fullstack PHP - Backend
+# Teste Fullstack PHP - Frontend
 
-![GitHub repo size](https://img.shields.io/github/repo-size/savio-2-lopes/teste-fullstack-php)
-![GitHub language count](https://img.shields.io/github/languages/count/savio-2-lopes/teste-fullstack-php)
-![GitHub top language](https://img.shields.io/github/languages/top/savio-2-lopes/teste-fullstack-php)
+![GitHub repo size](https://img.shields.io/github/repo-size/savio-2-lopes/personal-portfolio)
+![GitHub language count](https://img.shields.io/github/languages/count/savio-2-lopes/personal-portfolio)
+![GitHub top language](https://img.shields.io/github/languages/top/savio-2-lopes/personal-portfolio)
 ![GitHub followers](https://img.shields.io/github/followers/savio-2-lopes?label=Follow&style=social)
 
 <br>
@@ -27,20 +27,9 @@ Necessário possuir Docker instalado na máquina para rodar Backend e Frontend. 
 
 <br>
 
-## Tecnologias do Backend
-
-Tecnologias e ferramentas utilizadas no desenvolvimento do Backend:
-
-- [PHP 8.1.0](https://www.php.net/releases/8.1/en.php)
-- [Docker](https://www.docker.com/)
-- [Swooler](https://openswoole.com/)
-- [MySQL](https://www.mysql.com/)
-
-<br>
-
 ## Tecnologias do Frontend
 
-Tecnologias e ferramentas utilizadas no desenvolvimento do Frontend:
+Tecnologias e ferramentas utilizadas no desenvolvimento da Web:
 
 - [PHP 8.1.0](https://www.php.net/releases/8.1/en.php)
 - [Docker](https://www.docker.com/)
@@ -51,58 +40,9 @@ Tecnologias e ferramentas utilizadas no desenvolvimento do Frontend:
 
 <br>
 
-### API endpoints
-
-`GET /veiculos`
-
-Retorna todos os veículos
-
----
-
-`GET /veiculos/:id`
-
-Retorna os veículos de acordo com o termo passado parâmetro `q`
-
----
-
-`PUT /veiculos/:id`
-
-Retorna dado de um veículo com base no `id`
-
----
-`POST /veiculos`
-
-Adiciona um novo veículo
-
-<br>
-
-## Instalação Backend
+## Instalação
 
 ```bash
-# Backend presente na pasta backend-4event
-$ cd backend-4event
-
-# Rodando o servidor com docker
-$ docker compose up --build
-
-# Necessário criar o banco de dados 4Events.
-# Para isso, na pasta teste-fullstack-php/backend-4event/app/create-table.sql há o script sql create-table.sql.
-# Para acessar o banco de dados do Docker, as credenciais são as seguintes:
-$ user: root;
-$ password: root;
-$ db: 4Events-backend;
-
-## A api estará rodando usando IP da máquina
-$ http:<SEU_IP>:8000
-
-```
-
-## Instalação Frontend
-
-```bash
-# Frontend presente na pasta frontend-4event
-$ cd frontend-4event
-
 # Rodando o servidor com docker
 $ docker compose up --build
 
